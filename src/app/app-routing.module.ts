@@ -11,6 +11,39 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'plantas',
+    loadChildren: () => import('./plantas/plantas.module').then( m => m.PlantasPageModule)
+  },
+  {
+    path: 'registros',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./registros/registros.module').then( m => m.RegistrosPageModule)
+      },
+      {
+        path: ":registroId",
+        loadChildren: () => import('./registros/detalle-registro/detalle-registro.module').then( m => m.DetalleRegistroPageModule)
+
+      }
+    ]
+  },
+  {
+    path: 'registros/newRegistro',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./registros/add-registro/add-registro.module').then( m => m.AddRegistroPageModule)
+      },
+      {
+        path: ":registroId",
+        loadChildren: () => import('./registros/add-registro/add-registro.module').then( m => m.AddRegistroPageModule)
+
+      }
+    ]
+    
+  },
 ];
 
 @NgModule({

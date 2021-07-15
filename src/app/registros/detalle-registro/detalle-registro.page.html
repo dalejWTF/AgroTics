@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/registros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle de Registro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="deletePlanta()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <!-- Titulo -->
+    <ion-col>
+      <h1 class="ion-text-center"> {{planta.nombreComun}} </h1>
+    </ion-col>
+
+    <!-- Imagen -->
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="planta.imageURL"></ion-img>
+      </ion-col>
+    </ion-row>
+
+
+    <div id="faq">
+      <ul>
+        <!-- General -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> General </h2>
+          <p>
+            Ciclo de vida: {{planta.cicloVida}} <br>
+            Origen: {{planta.origen}} <br>
+            Uso y Aplicación: {{planta.usoAplicacion}} <br>
+            Produccion Promedio: {{planta.produccionPromedio}} <br>
+            Altura: {{planta.altura}}m <br>
+            Diametro: {{planta.diamentro}}m <br>
+            Clima: {{planta.clima}} <br>
+            Preparacion de Terreno: {{planta.preparacionTerreno}} <br>
+          </p>
+        </li>
+
+        <!-- Taxonomía -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Taxonomía </h2>
+          <p>
+            Familia: {{planta.familia}} <br>
+            Género: {{planta.genero}} <br>
+            Especie: {{planta.especie}} <br>
+            Nombre Cientifico: {{planta.nombreCientifico}}
+          </p>
+        </li>
+
+        <!-- Abonamiento y fertilización -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Abonamiento, Recolección y Control de Plagas </h2>
+          <p>
+            <b>Abonamiento y fertilización</b> <br>
+            {{planta.abonoFertilizacion}} <br>
+            <b>Recolección</b><br>
+            {{planta.recoleccionAlmacenamiento}} <br>
+            <b>Control de Plagas</b><br>
+            {{planta.controlMalasHierbas}} <br>
+          </p>
+        </li>
+
+        <!-- Material vegetal (variedades) -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Material vegetal (variedades) </h2>
+          <p>
+            {{planta.variedad}}
+          </p>
+        </li>
+
+        <!-- Riego -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Riego </h2>
+          <p>
+            Sistema: {{planta.detalleRiego}} <br>
+            Detalle: {{planta.detalleRiego}}
+          </p>
+        </li>
+      </ul>
+    </div>
+
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    
+    <ion-fab-button color="success"  [routerLink]="['/registros/newRegistro',planta.id]">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

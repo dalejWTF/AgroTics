@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="plantas.length > 0; else SinRegistros">
+    <ion-item *ngFor="let planta of plantas" [routerLink]="['/registros',planta.id]">
+    
+      <ion-avatar slot="start">
+        <ion-img [src]="planta.imageURL"></ion-img>
+      </ion-avatar>
+    
+      <ion-label>
+        {{planta.nombreComun}}
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
+
+  <!--- Para presentar mensaje si esta vacío --->
+  <ng-template #SinRegistros>
+    <ion-text>
+      <p class="ion-text-center"> Sin registros aún</p>
+    </ion-text>
+  </ng-template>
+
+</ion-content>

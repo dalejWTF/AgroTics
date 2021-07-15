@@ -1,0 +1,266 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/registros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div id="faq">
+    <ul>
+      <!-- DATOS GENERALES -->
+      <li>
+        <input type="checkbox" checked>
+        <i></i>
+        <h2> Datos Generales </h2>
+        <p>
+          <ion-item>
+            <ion-label>Ubicacion</ion-label>
+            <ion-select interface="popover" [(ngModel)]="ubicacion">
+              <ion-select-option value="EAUTPL">EA UTPL</ion-select-option>
+              <ion-select-option value="EAUTPL2">EA UTPL2</ion-select-option>
+              <ion-select-option value="EAUTPL3">EA UTPL 3</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fecha Muestreo:</ion-label>
+            <ion-input type="date" displayFormat="YYYY-MM-DD" [(ngModel)]="fechaMuestreo"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Lugar/Lote</ion-label>
+            <ion-select interface="popover" [(ngModel)]="lugarLote">
+              <ion-select-option value="inv1">Invernadero 1</ion-select-option>
+              <ion-select-option value="inv2">Invernadero 2</ion-select-option>
+              <ion-select-option value="parCA1">Parcela 1 CA</ion-select-option>
+              <ion-select-option value="parCA2">Parcela 2 CA</ion-select-option>
+              <ion-select-option value="parCA3">Parcela 3 CA</ion-select-option>
+              <ion-select-option value="parCA4">Parcela 4 CA</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Área Sembrada:</ion-label>
+            <ion-input type="number" placeholder=" (m2)" #areaSembrada></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Planta/especie (Cultivo):</ion-label>
+            <ion-input disabled="true" value="{{planta.nombreComun}}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nombre científico:</ion-label>
+            <ion-input disabled="true" value="{{planta.nombreCientifico}}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Variedad:</ion-label>
+            <ion-input disabled="true" value="{{planta.cariedad}}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fecha Implementación:</ion-label>
+            <ion-input type="date" displayFormat="YYYY-MM-DD" [(ngModel)]="fechaImplementacion"></ion-input>
+          </ion-item>
+
+
+
+        </p>
+      </li>
+
+      <!-- DATOS FENOLÓGICOS -->
+      <li>
+        <input type="checkbox" checked>
+        <i></i>
+        <h2> Datos Fenológicos </h2>
+        <p>
+          <ion-item>
+            <ion-label>Germinación:</ion-label>
+            <ion-input type="number" placeholder=" (%)" #germinacion></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Altura:</ion-label>
+            <ion-input type="number" placeholder=" (cm)" #altura></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Diametro:</ion-label>
+            <ion-input type="number" placeholder=" (cm)" #diametro></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nro Racimos:</ion-label>
+            <ion-input type="number" placeholder="(numérico)" #nroRacimos></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nro Flores/racimos:</ion-label>
+            <ion-input type="number" placeholder="(numérico)" #nroFlores></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nro Flores totales planta:</ion-label>
+            <ion-input type="number" placeholder="(numérico)" #nroFloresTotales></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nro frutos/racimo:</ion-label>
+            <ion-input type="number" placeholder="(numérico)" #nroFrutos></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nro frutos totales planta:</ion-label>
+            <ion-input type="number" placeholder="(numérico)" #nroFrutosTotales></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Longitud fruto:</ion-label>
+            <ion-input type="number" placeholder=" (cm)" #longFruto></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Diametro fruto:</ion-label>
+            <ion-input type="number" placeholder=" (cm)" #diametroFruto></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Peso del fruto:</ion-label>
+            <ion-input type="number" placeholder=" (g)" #pesoFruto></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Producción/planta:</ion-label>
+            <ion-input type="number" placeholder=" (kg)" #produccion></ion-input>
+          </ion-item>
+        </p>
+      </li>
+
+      <!-- DATOS ANÁLISIS DEL SUELO -->
+      <li>
+        <input type="checkbox" checked>
+        <i></i>
+        <h2> Datos de Análisis del Suelo </h2>
+        <p>
+          <ion-item>
+            <ion-label>pH suelo:</ion-label>
+            <ion-input type="number" placeholder="(numérico)" #pHsuelo></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>MO:</ion-label>
+            <ion-input type="number" placeholder=" (%)" #mo></ion-input>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Nitrógeno:</ion-label>
+            <ion-input type="number" placeholder=" (%)" #nitrogeno></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fósforo:</ion-label>
+            <ion-input type="number" placeholder=" (mg/hg)" #fosforo></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Potasio:</ion-label>
+            <ion-input type="number" placeholder="Altura (Cmol/kg)" #potasio></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Otros Elementos:</ion-label>
+            <ion-input type="text" placeholder="(describa)" #otrosElementos></ion-input>
+          </ion-item>
+        </p>
+      </li>
+
+      <!-- DATOS CLIMÁTICOS -->
+      <li>
+        <input type="checkbox" checked>
+        <i></i>
+        <h2> Datos Climáticos </h2>
+        <p>
+          <ion-item>
+            <ion-label>Temperatura:</ion-label>
+            <ion-input type="number" placeholder="(°C)" #temperatura></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Humedad Relativa:</ion-label>
+            <ion-input type="number" placeholder=" (%)" #humedadRelativa></ion-input>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Riego/lluvia:</ion-label>
+            <ion-input type="number" placeholder=" (mL/planta)" #RiegoLluvia></ion-input>
+          </ion-item>
+
+        </p>
+      </li>
+
+      <!-- DATOS FERTILIZANTE -->
+      <li>
+        <input type="checkbox" checked>
+        <i></i>
+        <h2> Datos de Aplicación de Fertilizante </h2>
+        <p>
+          <ion-item>
+            <ion-label>Fertilización/fertilizante/Abono:</ion-label>
+            <ion-input type="text" placeholder="###-###-###" #ferFerAbono></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Cantidad:</ion-label>
+            <ion-input type="number" placeholder=" (g/planta)" #cantidadFertilizante></ion-input>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fechas Aplicación:</ion-label>
+            <ion-input type="date" displayFormat="YYYY-MM-DD" [(ngModel)]="fechaAplicacionFertilizante"></ion-input>
+          </ion-item>
+
+        </p>
+      </li>
+
+      <!-- DATOS PRODUCTOS, CONTROL DE PLAGAS Y ENFERMEDADES -->
+      <li>
+        <input type="checkbox" checked>
+        <i></i>
+        <h2> Aplicación de Productos, Control de Plagas y Enfermedades </h2>
+        <p>
+          <ion-item>
+            <ion-label>Control de plagas y enfermedades/poducto:</ion-label>
+            <ion-input type="text" placeholder="describa" #controlPlagaEnfProd></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Cantidad:</ion-label>
+            <ion-input type="number" placeholder=" (numérico)" #cantidadProdPlaEnf></ion-input>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Fechas Aplicación:</ion-label>
+            <ion-input type="date" displayFormat="YYYY-MM-DD" [(ngModel)]="fechaAplicacionProdPlag"></ion-input>
+          </ion-item>
+
+        </p>
+      </li>
+
+      <ion-button
+        (click)="saveRegistro(areaSembrada, germinacion, altura, diametro, nroRacimos, nroFlores, nroFloresTotales, nroFrutos, nroFrutosTotales, longFruto, diametroFruto, pesoFruto, produccion, pHsuelo, mo, nitrogeno, fosforo, potasio, otrosElementos, temperatura, humedadRelativa, RiegoLluvia, ferFerAbono, cantidadFertilizante, controlPlagaEnfProd, cantidadProdPlaEnf)">
+        save
+      </ion-button>
+    </ul>
+  </div>
+
+
+
+</ion-content>
