@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiPlantasService {
 
-  baseUrl="http://192.168.68.110:8000";
+  baseUrl="http://127.0.0.1:8000/api/plantas/?format=json";
   httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
   constructor(private http: HttpClient) { }
 
   getAllPlantas(): Observable<any>{
-    return this.http.get(this.baseUrl + '/plantas/',{headers: this.httpHeaders});
+    return this.http.get(this.baseUrl);
   }
 }

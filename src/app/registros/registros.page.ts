@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiPlantasService } from '../api-planta.service';
 import { RegistrosService } from './registros.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { RegistrosService } from './registros.service';
 })
 export class RegistrosPage implements OnInit {
 
-  plantas = [{title: 'test'}]
+  plantas = []
   
-  constructor(private api: ApiService, private router: Router) {}
+  constructor(private api: ApiPlantasService, private router: Router) {}
   ngOnInit(): void {
     this.getPLantas();
   }
@@ -21,6 +21,7 @@ export class RegistrosPage implements OnInit {
     this.api.getAllPlantas().subscribe(
       data=>{
         this.plantas=data;
+        console.log(this.plantas);
       },
       error =>{
         console.log(error);
