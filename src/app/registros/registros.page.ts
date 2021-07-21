@@ -13,8 +13,6 @@ import { Taxonomia } from './taxonomia.model';
 export class RegistrosPage implements OnInit {
 
   plantas:any=[];
-  plantaB=[]
-  taxonomia: Taxonomia;
 
   constructor(private api: ApiPlantasService, private router: Router) {
     this.cargarPlantas();
@@ -30,8 +28,6 @@ export class RegistrosPage implements OnInit {
     this.api.getAllPlantas().subscribe(
       data => {
         this.plantas = data;
-        this.plantaB=this.plantas;
-        this.taxonomia=this.plantas[0].idTaxonomia;
         console.log(this.plantas)
       },
       error => {
@@ -45,8 +41,6 @@ export class RegistrosPage implements OnInit {
     this.api.getAllPlantas().subscribe(
       data => {
         this.plantas = data;
-        this.taxonomia=this.plantas[0].idTaxonomia;
-        
       },
       error => {
         console.log(error);
