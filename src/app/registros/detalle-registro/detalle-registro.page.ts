@@ -101,21 +101,7 @@ export class DetalleRegistroPage implements OnInit {
 
 
   ionViewWillEnter() {
-    this.activatedRoute.paramMap.subscribe(paramMap => {
-      const id = paramMap.get('registroId')
-      this.finalId = parseInt(id) - 1;
-      console.log(this.finalId);
-      this.api.getAllPlantas().subscribe(
-        data => {
-          const plantas = data;
-          this.nombre = plantas[this.finalId].idTaxonomia.nombreComun;
-
-        },
-        error => {
-          console.log(error);
-        }
-      )
-    })
+    this.cargarPlantas();
   }
 
   async deleteRegistro() {
