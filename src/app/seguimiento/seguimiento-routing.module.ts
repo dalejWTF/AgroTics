@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: SeguimientoPage
+  },
+  {
+    path: 'detalle-seguimiento',
+    loadChildren: () => import('./detalle-seguimiento/detalle-seguimiento.module').then( m => m.DetalleSeguimientoPageModule)
   }
 ];
 

@@ -8,23 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>
-        Total de Registros Actuales: 40
-      </ion-card-title>
-    </ion-card-header>
-  </ion-card>
-
-  <ion-list *ngIf="plantas.length > 0; else SinRegistros">
-    <ion-item *ngFor="let planta of plantas" [routerLink]="['/registros',planta.id]">
+  
+  <br>
+  <ion-text class="totalSeguimiento" > Total de Registros: {{seguimiento.length}}</ion-text>  
+  <ion-list *ngIf="seguimiento.length > 0; else SinRegistros">
+    <ion-item *ngFor="let seg of seguimiento" [routerLink]="['/seguimiento',seg.id]">
     
       <ion-avatar slot="start">
-        <ion-img [src]="planta.imageURL"></ion-img>
+        <ion-img [src]="seg.idPlanta.imagen"></ion-img>
       </ion-avatar>
     
       <ion-label>
-        {{planta.idTaxonomia.nombreComun}}
+        {{seg.idPlanta.idTaxonomia.nombreComun}} - {{seg.fechaImplementacion}} 
       </ion-label>
 
     </ion-item>

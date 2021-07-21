@@ -46,8 +46,19 @@ const routes: Routes = [
   },
   {
     path: 'seguimiento',
-    loadChildren: () => import('./seguimiento/seguimiento.module').then( m => m.SeguimientoPageModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./seguimiento/seguimiento.module').then( m => m.SeguimientoPageModule)
+      },
+      {
+        path: ":registroId",
+        loadChildren: () => import('./seguimiento/detalle-seguimiento/detalle-seguimiento.module').then( m => m.DetalleSeguimientoPageModule)
+
+      }
+    ]
   },
+
 ];
 
 @NgModule({
