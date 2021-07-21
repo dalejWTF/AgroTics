@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiPlantasService } from '../api-planta.service';
-import { RegistrosService } from './registros.service';
+import { Taxonomia } from './taxonomia.model';
+
 
 @Component({
   selector: 'app-registros',
@@ -10,23 +12,49 @@ import { RegistrosService } from './registros.service';
 })
 export class RegistrosPage implements OnInit {
 
-  plantas = []
-  
-  constructor(private api: ApiPlantasService, private router: Router) {}
-  ngOnInit(): void {
-    this.getPLantas();
+  plantas:any=[];
+  plantaB=[]
+  taxonomia: Taxonomia;
+
+  constructor(private api: ApiPlantasService, private router: Router) {
+    this.cargarPlantas();
+    
+   }
+  ngOnInit() {
+    console.log('inicio',this.plantas);
+    this.cargarPlantas();
+    
   }
 
-  getPLantas= () =>{
+  cargarPlantas=()=>{
     this.api.getAllPlantas().subscribe(
-      data=>{
-        this.plantas=data;
-        console.log(this.plantas);
+      data => {
+        this.plantas = data;
+        this.plantaB=this.plantas;
+        this.taxonomia=this.plantas[0].idTaxonomia;
+        console.log(this.plantas)
       },
-      error =>{
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  ionViewWillEnter() {
+    
+    this.api.getAllPlantas().subscribe(
+      data => {
+        this.plantas = data;
+        this.taxonomia=this.plantas[0].idTaxonomia;
+        
+      },
+      error => {
         console.log(error);
       }
     )
   }
   
+  
+
+
 }

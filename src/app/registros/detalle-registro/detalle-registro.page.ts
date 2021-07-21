@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Plantas } from '../plantas.model';
-import { RegistrosService } from '../registros.service';
 import { AlertController } from "@ionic/angular";
+import { ApiPlantasService } from 'src/app/api-planta.service';
+import { Taxonomia } from '../taxonomia.model';
 
 @Component({
   selector: 'app-detalle-registro',
@@ -10,15 +10,115 @@ import { AlertController } from "@ionic/angular";
   styleUrls: ['./detalle-registro.page.scss'],
 })
 export class DetalleRegistroPage implements OnInit {
+  plantas: any[];
+  finalId: number;
+  id: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private registrosService: RegistrosService, private alertController: AlertController) { }
-  planta: Plantas
+  taxonomia: Taxonomia[];
+  //Var Planta General
+  imagen: string; altura: string; cicloVida: string; clima: string; diametro: string; idPlanta: string;
+  origen: string; preparacionTerreno: string; produccionPromedio: string; usoAplicacion: string;  categoria: string;
+
+  //Var Taxonomia
+  nombreCientifico: string; genero: string; familia: string; especie: string; nombre: string; idTaxonomia: string;
+
+  //Var Cuidado
+  abonoFertilizacion: string; recoleccion: string; controlMalasHierbas: string;
+
+  //Var Riego
+  sistema: string;  detalle: string;
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private api: ApiPlantasService, private alertController: AlertController) {
+    this.cargarPlantas();
+    console.log('tax:', this.nombre)
+    console.log(this.taxonomia);
+  }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
+      this.id = paramMap.get('registroId')
+      console.log(this.taxonomia);
+      this.finalId = parseInt(this.id) - 1;
+    })
+  }
+
+  cargarPlantas = () => {
+    this.api.getAllPlantas().subscribe(
+      data => {
+        this.plantas = data;
+        this.taxonomia = this.plantas[0].idTaxonomia;
+        console.log(this.taxonomia);
+        this.getTaxonomia(data);
+        this.getGeneral(data);
+        this.getCuidado(data);
+        this.getRiego(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  getTaxonomia(data: any) {
+    this.idTaxonomia = data[this.finalId].idTaxonomia.id;
+    this.nombre = data[this.finalId].idTaxonomia.nombreComun;
+    this.nombreCientifico = data[this.finalId].idTaxonomia.nombreCientifico;
+    this.genero = data[this.finalId].idTaxonomia.genero;
+    this.familia = data[this.finalId].idTaxonomia.familia;
+    this.especie = data[this.finalId].idTaxonomia.especie;
+
+  }
+
+  getGeneral(data: any) {
+    this.imagen = data[this.finalId].imagen;
+    this.altura = data[this.finalId].altura;
+    this.cicloVida = data[this.finalId].cicloVida;
+    this.clima = data[this.finalId].clima;
+    this.diametro = data[this.finalId].diametro;
+    this.origen = data[this.finalId].origen;
+    this.preparacionTerreno = data[this.finalId].preparacionTerreno;
+    this.produccionPromedio = data[this.finalId].produccionPromedio;
+    this.usoAplicacion = data[this.finalId].usoAplicacion;
+    this.categoria= data[this.finalId].idCategoria.categoria;
+  }
+
+  getCuidado(data: any) {
+    this.abonoFertilizacion = data[this.finalId].idCuidado.abonoFertilizacion;
+    this.recoleccion = data[this.finalId].idCuidado.recoleccion;
+    this.controlMalasHierbas = data[this.finalId].idCuidado.controlMalasHierbas;
+  }
+
+  getRiego(data: any) {
+    this.sistema = data[this.finalId].idRiego.sistema;
+    this.detalle = data[this.finalId].idRiego.detalle;
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+  ionViewWillEnter() {
+    this.activatedRoute.paramMap.subscribe(paramMap => {
       const id = paramMap.get('registroId')
-      this.planta = this.registrosService.getPlanta(id);
-      
+      this.finalId = parseInt(id) - 1;
+      console.log(this.finalId);
+      this.api.getAllPlantas().subscribe(
+        data => {
+          const plantas = data;
+          this.nombre = plantas[this.finalId].idTaxonomia.nombreComun;
+
+        },
+        error => {
+          console.log(error);
+        }
+      )
     })
   }
 
@@ -34,7 +134,7 @@ export class DetalleRegistroPage implements OnInit {
         {
           text: 'Eliminar',
           handler: () => {
-            this.registrosService.deletePlanta(this.planta.id);
+            //this.registrosService.deletePlanta(this.planta.id);
             this.router.navigate(['/registros']);
           }
         }
@@ -44,7 +144,7 @@ export class DetalleRegistroPage implements OnInit {
 
   }
 
-  addNewRegistro(id){
-    this.router.navigate(['/registros/newRegistro',id])
+  addNewRegistro(id) {
+    this.router.navigate(['/registros/newRegistro', id])
   }
 }

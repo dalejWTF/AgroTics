@@ -3,17 +3,24 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/plantas"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registros</ion-title>
+    <ion-title>Seguimiento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Total de Registros Actuales: 40
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
 
   <ion-list *ngIf="plantas.length > 0; else SinRegistros">
     <ion-item *ngFor="let planta of plantas" [routerLink]="['/registros',planta.id]">
     
       <ion-avatar slot="start">
-        <ion-img [src]="planta.imagen"></ion-img>
+        <ion-img [src]="planta.imageURL"></ion-img>
       </ion-avatar>
     
       <ion-label>
@@ -29,6 +36,6 @@
     <ion-text>
       <p class="ion-text-center"> Sin registros aún</p>
     </ion-text>
-  </ng-template>
+  </ng-template>  
 
 </ion-content>

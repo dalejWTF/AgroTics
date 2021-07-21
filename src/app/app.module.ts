@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiPlantasService } from './api-planta.service';
+import { RegistrosPage } from './registros/registros.page';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },ApiPlantasService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },ApiPlantasService,RegistrosPage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

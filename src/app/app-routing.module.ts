@@ -44,6 +44,10 @@ const routes: Routes = [
     ]
     
   },
+  {
+    path: 'seguimiento',
+    loadChildren: () => import('./seguimiento/seguimiento.module').then( m => m.SeguimientoPageModule)
+  },
 ];
 
 @NgModule({
