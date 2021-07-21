@@ -11,7 +11,7 @@ export class ApiSeguimientoService {
   httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(private http: HttpClient) { }
 
-  getAllPlantas(): Observable<any> {
+  getAllSeguimientos(): Observable<any> {
     return this.http.get(this.baseUrl);
   }
 }

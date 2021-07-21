@@ -12,15 +12,15 @@ export class SeguimientoPage implements OnInit {
   seguimiento:any=[];
 
   constructor(private api: ApiSeguimientoService, private router: Router) {
-    this.cargarPlantas();
+    this.cargarSeguimiento();
     
    }
   ngOnInit() {
-    this.cargarPlantas();
+    this.cargarSeguimiento();
   }
 
-  cargarPlantas=()=>{
-    this.api.getAllPlantas().subscribe(
+  cargarSeguimiento=()=>{
+    this.api.getAllSeguimientos().subscribe(
       data => {
         this.seguimiento = data;
         console.log('seg',this.seguimiento)
@@ -33,13 +33,6 @@ export class SeguimientoPage implements OnInit {
 
   ionViewWillEnter() {
     
-    this.api.getAllPlantas().subscribe(
-      data => {
-        this.seguimiento = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    this.cargarSeguimiento();
   }
 }

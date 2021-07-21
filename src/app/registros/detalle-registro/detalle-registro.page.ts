@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlertController } from "@ionic/angular";
 import { ApiPlantasService } from 'src/app/api-planta.service';
-import { Taxonomia } from '../taxonomia.model';
+
 
 @Component({
   selector: 'app-detalle-registro',
@@ -14,7 +14,7 @@ export class DetalleRegistroPage implements OnInit {
   finalId: number;
   id: string;
 
-  taxonomia: Taxonomia[];
+
   //Var Planta General
   imagen: string; altura: string; cicloVida: string; clima: string; diametro: string; idPlanta: string;
   origen: string; preparacionTerreno: string; produccionPromedio: string; usoAplicacion: string;  categoria: string;
@@ -30,14 +30,12 @@ export class DetalleRegistroPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private api: ApiPlantasService, private alertController: AlertController) {
     this.cargarPlantas();
-    console.log('tax:', this.nombre)
-    console.log(this.taxonomia);
+    
   }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.id = paramMap.get('registroId')
-      console.log(this.taxonomia);
       this.finalId = parseInt(this.id) - 1;
     })
   }
@@ -46,8 +44,6 @@ export class DetalleRegistroPage implements OnInit {
     this.api.getAllPlantas().subscribe(
       data => {
         this.plantas = data;
-        this.taxonomia = this.plantas[0].idTaxonomia;
-        console.log(this.taxonomia);
         this.getTaxonomia(data);
         this.getGeneral(data);
         this.getCuidado(data);
