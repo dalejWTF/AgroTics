@@ -19,7 +19,6 @@ export class RegistrosPage implements OnInit {
     
    }
   ngOnInit() {
-    console.log('inicio',this.plantas);
     this.cargarPlantas();
     
   }
@@ -28,7 +27,6 @@ export class RegistrosPage implements OnInit {
     this.api.getAllPlantas().subscribe(
       data => {
         this.plantas = data;
-        console.log(this.plantas)
       },
       error => {
         console.log(error);
@@ -37,15 +35,7 @@ export class RegistrosPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    
-    this.api.getAllPlantas().subscribe(
-      data => {
-        this.plantas = data;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    this.cargarPlantas();
   }
   
   

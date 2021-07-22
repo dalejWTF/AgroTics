@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'detalle-seguimiento',
     loadChildren: () => import('./detalle-seguimiento/detalle-seguimiento.module').then( m => m.DetalleSeguimientoPageModule)
+  },
+  {
+    path: 'edit-seguimiento',
+    loadChildren: () => import('./edit-seguimiento/edit-seguimiento.module').then( m => m.EditSeguimientoPageModule)
   }
 ];
 

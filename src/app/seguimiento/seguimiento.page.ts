@@ -23,7 +23,7 @@ export class SeguimientoPage implements OnInit {
     this.api.getAllSeguimientos().subscribe(
       data => {
         this.seguimiento = data;
-        console.log('seg',this.seguimiento)
+        
       },
       error => {
         console.log(error);

@@ -1,9 +1,104 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalle-seguimiento</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/registros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle del Seguimiento</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/seguimiento/editSeguimiento',id]">
+        <ion-icon color="success" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <!-- Titulo -->
+    <ion-col>
+      <h1 class="ion-text-center"> {{nombre}} </h1>
+    </ion-col>
 
+    <!-- Imagen -->
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="imagen"></ion-img>
+      </ion-col>
+    </ion-row>
+
+
+    <div id="faq">
+      <ul>
+        <!-- Datos Fenológicos del Cultivo -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Datos Fenológicos del Cultivo </h2>
+          <p>
+            <b>Fecha Implementación: </b>{{fechaImplementacion}} <br>
+            <b>Lote: </b>{{lote}} <br>
+            <b>Germinación: </b>{{germinacion}}% <br>
+            <b>Peso Fruto: </b>{{pesoFruto}}g <br>
+            <b>Peso Producción: </b>{{pesoProduccion}}kg <br>
+            <b>Altura: </b>{{altura}}m <br>
+            <b>Diametro: </b>{{diametro}}m <br>
+          </p>
+        </li>
+
+        <!-- Datos Analisis Suelo -->
+
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Datos Analisis Suelo </h2>
+          <p>
+            <b>Ph: </b>{{ph}} <br>
+            <b>Fosforo: </b>{{fosforo}} (mg/hg) <br>
+            <b>MO: </b>{{mo}}% <br>
+            <b>Nitrógeno: </b>{{nitrogeno}}% <br>
+            <b>Potasio: </b>{{potasio}} (Cmol/kg)<br>
+
+          </p>
+        </li>
+
+        <!-- Datos Clima -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Datos Clima </h2>
+          <p>
+            <b>Humedad: </b> {{humedad}}% <br>
+            <b>Riego: </b> {{riego}} (mL/planta)<br>
+            <b>Temperatura: </b> {{temperatura}}°C <br>
+          </p>
+        </li>
+
+        <!-- Datos Control de Plagas -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Datos Control de Plagas </h2>
+          <p>
+            <b>Cantidad: </b>{{cantidadCtrlPlagas}}g <br>
+            <b>Control Plaga: </b>{{controlPlagas}} <br>
+            <b>Fecha Aplicación: </b>{{fechaAplicacion}} <br>
+          </p>
+        </li>
+
+        <!-- Datos Fertilizante -->
+        <li>
+          <input type="checkbox" checked>
+          <i></i>
+          <h2> Datos Fertilizante </h2>
+          <p>
+            <b>Cantidad: </b>{{cantidadFertilizante}} g/planta<br>
+            <b>Fecha Aplicación: </b>{{fechaAplicacionFertilizante}} <br>
+            <b>Fertilización/fertilizante/abono: </b>{{fertilizacion}}
+          </p>
+        </li>
+
+      </ul>
+    </div>
+
+  </ion-grid>
 </ion-content>

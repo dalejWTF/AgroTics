@@ -58,7 +58,21 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'seguimiento/editSeguimiento',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./seguimiento/edit-seguimiento/edit-seguimiento.module').then( m => m.EditSeguimientoPageModule)
+      },
+      {
+        path: ":registroId",
+        loadChildren: () => import('./seguimiento/edit-seguimiento/edit-seguimiento.module').then( m => m.EditSeguimientoPageModule)
 
+      }
+    ]
+    
+  },
 ];
 
 @NgModule({
