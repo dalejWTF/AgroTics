@@ -5,25 +5,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-list >
-    <ion-item>
-      <ion-router-link color="secondary" href="registros/">   
-        <ion-label>
-          <h1>Registros
-            <ion-icon slot="end" name="library-outline"></ion-icon>
-          </h1>
-        </ion-label>
-      </ion-router-link>
-    </ion-item>
 
-    <ion-item>
-      <ion-router-link color="secondary" href="seguimiento/">   
-        <ion-label>
-          <h1>Seguimiento
-            <ion-icon slot="end" name="analytics-outline"></ion-icon>
-          </h1>
-        </ion-label>
-      </ion-router-link>
-    </ion-item>
-  </ion-list>
+  <ion-card href="registros/">
+    <img src="../../assets/img/registro.jpg"/>
+    <ion-card-header>
+      <ion-card-title>Registros</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Visualiza las plantas registradas
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card href="seguimiento/">
+    <img src="../../assets/img/seguimiento.jpeg"/>
+    <ion-card-header>
+      <ion-card-title>Seguimiento</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Visualiza los seguimientos registrados sobre las plantas
+    </ion-card-content>
+  </ion-card>
 </ion-content>
