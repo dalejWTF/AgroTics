@@ -16,7 +16,6 @@ export class RegistrosPage implements OnInit {
 
   constructor(private api: ApiPlantasService, private router: Router) {
     this.cargarPlantas();
-    
    }
   ngOnInit() {
     this.cargarPlantas();

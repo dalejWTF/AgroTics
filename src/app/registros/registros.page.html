@@ -10,7 +10,7 @@
 <ion-content>
 
   <ion-list *ngIf="plantas.length > 0; else SinRegistros">
-    <ion-item *ngFor="let planta of plantas" [routerLink]="['/registros',planta.id]">
+    <ion-item *ngFor="let planta of plantas; index as i" [routerLink]="['/registros',i]">
     
       <ion-avatar slot="start">
         <ion-img [src]="planta.imagen"></ion-img>

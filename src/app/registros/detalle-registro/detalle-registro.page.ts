@@ -11,9 +11,7 @@ import { ApiPlantasService } from 'src/app/api-planta.service';
 })
 export class DetalleRegistroPage implements OnInit {
   plantas: any[];
-  finalId: number;
-  id: string;
-
+  id: number;
 
   //Var Planta General
   imagen: string; altura: string; cicloVida: string; clima: string; diametro: string; idPlanta: string;
@@ -35,8 +33,8 @@ export class DetalleRegistroPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
-      this.id = paramMap.get('registroId')
-      this.finalId = parseInt(this.id) - 1;
+      this.id = parseInt(paramMap.get('registroId'))
+    
     })
   }
 
@@ -56,37 +54,37 @@ export class DetalleRegistroPage implements OnInit {
   }
 
   getTaxonomia(data: any) {
-    this.idTaxonomia = data[this.finalId].idTaxonomia.id;
-    this.nombre = data[this.finalId].idTaxonomia.nombreComun;
-    this.nombreCientifico = data[this.finalId].idTaxonomia.nombreCientifico;
-    this.genero = data[this.finalId].idTaxonomia.genero;
-    this.familia = data[this.finalId].idTaxonomia.familia;
-    this.especie = data[this.finalId].idTaxonomia.especie;
+    this.idTaxonomia = data[this.id].idTaxonomia.id;
+    this.nombre = data[this.id].idTaxonomia.nombreComun;
+    this.nombreCientifico = data[this.id].idTaxonomia.nombreCientifico;
+    this.genero = data[this.id].idTaxonomia.genero;
+    this.familia = data[this.id].idTaxonomia.familia;
+    this.especie = data[this.id].idTaxonomia.especie;
 
   }
 
   getGeneral(data: any) {
-    this.imagen = data[this.finalId].imagen;
-    this.altura = data[this.finalId].altura;
-    this.cicloVida = data[this.finalId].cicloVida;
-    this.clima = data[this.finalId].clima;
-    this.diametro = data[this.finalId].diametro;
-    this.origen = data[this.finalId].origen;
-    this.preparacionTerreno = data[this.finalId].preparacionTerreno;
-    this.produccionPromedio = data[this.finalId].produccionPromedio;
-    this.usoAplicacion = data[this.finalId].usoAplicacion;
-    this.categoria= data[this.finalId].idCategoria.categoria;
+    this.imagen = data[this.id].imagen;
+    this.altura = data[this.id].altura;
+    this.cicloVida = data[this.id].cicloVida;
+    this.clima = data[this.id].clima;
+    this.diametro = data[this.id].diametro;
+    this.origen = data[this.id].origen;
+    this.preparacionTerreno = data[this.id].preparacionTerreno;
+    this.produccionPromedio = data[this.id].produccionPromedio;
+    this.usoAplicacion = data[this.id].usoAplicacion;
+    this.categoria= data[this.id].idCategoria.categoria;
   }
 
   getCuidado(data: any) {
-    this.abonoFertilizacion = data[this.finalId].idCuidado.abonoFertilizacion;
-    this.recoleccion = data[this.finalId].idCuidado.recoleccion;
-    this.controlMalasHierbas = data[this.finalId].idCuidado.controlMalasHierbas;
+    this.abonoFertilizacion = data[this.id].idCuidado.abonoFertilizacion;
+    this.recoleccion = data[this.id].idCuidado.recoleccion;
+    this.controlMalasHierbas = data[this.id].idCuidado.controlMalasHierbas;
   }
 
   getRiego(data: any) {
-    this.sistema = data[this.finalId].idRiego.sistema;
-    this.detalle = data[this.finalId].idRiego.detalle;
+    this.sistema = data[this.id].idRiego.sistema;
+    this.detalle = data[this.id].idRiego.detalle;
     
   }
 
