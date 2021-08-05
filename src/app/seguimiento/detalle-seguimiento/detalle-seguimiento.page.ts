@@ -11,9 +11,8 @@ import { ApiSeguimientoService } from 'src/app/api-seguimiento.service';
 export class DetalleSeguimientoPage implements OnInit {
 
 
-  //Variables iniciales necesarias
-  finalId: number;
-  id: string;
+  //Variables iniciales necesaria
+  id: number;
   seguimiento: any[];
 
   //Var Datos Fenológicos Cultivo
@@ -40,8 +39,7 @@ export class DetalleSeguimientoPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
-      this.id = paramMap.get('registroId')
-      this.finalId = parseInt(this.id) - 1;
+      this.id = parseInt(paramMap.get('registroId'))
       this.cargarSeguimiento();
     })
   }
@@ -68,41 +66,41 @@ export class DetalleSeguimientoPage implements OnInit {
   }
 
   getFenologicosCultivo(data: any) {
-    this.nombre = data[this.finalId].idPlanta.idTaxonomia.nombreComun;
-    this.imagen = data[this.finalId].idPlanta.imagen;
-    this.fechaImplementacion = data[this.finalId].fechaImplementacion;
-    this.lote = data[this.finalId].idDatosUbicacion.lote;
-    this.pesoFruto = data[this.finalId].idDatosFenologicosCultivo.pesoFruto;
-    this.pesoProduccion = data[this.finalId].idDatosFenologicosCultivo.pesoProduccion;
-    this.altura = data[this.finalId].idDatosFenologicosCultivo.altura;
-    this.diametro = data[this.finalId].idDatosFenologicosCultivo.diametro;
-    this.germinacion= data[this.finalId].idDatosFenologicosCultivo.germinacion;
+    this.nombre = data[this.id].idPlanta.idTaxonomia.nombreComun;
+    this.imagen = data[this.id].idPlanta.imagen;
+    this.fechaImplementacion = data[this.id].fechaImplementacion;
+    this.lote = data[this.id].idDatosUbicacion.lote;
+    this.pesoFruto = data[this.id].idDatosFenologicosCultivo.pesoFruto;
+    this.pesoProduccion = data[this.id].idDatosFenologicosCultivo.pesoProduccion;
+    this.altura = data[this.id].idDatosFenologicosCultivo.altura;
+    this.diametro = data[this.id].idDatosFenologicosCultivo.diametro;
+    this.germinacion= data[this.id].idDatosFenologicosCultivo.germinacion;
   }
 
   getSuelo(data: any) {
-    this.fosforo = data[this.finalId].idDatosAnalisisSuelo.fosforo;
-    this.mo = data[this.finalId].idDatosAnalisisSuelo.mo;
-    this.nitrogeno = data[this.finalId].idDatosAnalisisSuelo.nitrogeno;
-    this.ph = data[this.finalId].idDatosAnalisisSuelo.ph;
-    this.potasio = data[this.finalId].idDatosAnalisisSuelo.potasio;
+    this.fosforo = data[this.id].idDatosAnalisisSuelo.fosforo;
+    this.mo = data[this.id].idDatosAnalisisSuelo.mo;
+    this.nitrogeno = data[this.id].idDatosAnalisisSuelo.nitrogeno;
+    this.ph = data[this.id].idDatosAnalisisSuelo.ph;
+    this.potasio = data[this.id].idDatosAnalisisSuelo.potasio;
   }
 
   getClima(data: any) {
-    this.humedad = data[this.finalId].idDatosClima.humedad;
-    this.riego = data[this.finalId].idDatosClima.riego;
-    this.temperatura = data[this.finalId].idDatosClima.temperatura;
+    this.humedad = data[this.id].idDatosClima.humedad;
+    this.riego = data[this.id].idDatosClima.riego;
+    this.temperatura = data[this.id].idDatosClima.temperatura;
   }
 
   getPlagas(data: any) {
-    this.cantidadCtrlPlagas = data[this.finalId].idDatosControlPlagas.cantidad;
-    this.controlPlagas = data[this.finalId].idDatosControlPlagas.controlPlaga;
-    this.fechaAplicacion = data[this.finalId].idDatosControlPlagas.fechaAplicacion;
+    this.cantidadCtrlPlagas = data[this.id].idDatosControlPlagas.cantidad;
+    this.controlPlagas = data[this.id].idDatosControlPlagas.controlPlaga;
+    this.fechaAplicacion = data[this.id].idDatosControlPlagas.fechaAplicacion;
   }
 
   getFertilizante(data: any) {
-    this.cantidadFertilizante = data[this.finalId].idDatosFertilizante.cantidad;
-    this.fechaAplicacionFertilizante = data[this.finalId].idDatosFertilizante.fechaAplicacion;
-    this.fertilizacion = data[this.finalId].idDatosFertilizante.fertilizacion;
+    this.cantidadFertilizante = data[this.id].idDatosFertilizante.cantidad;
+    this.fechaAplicacionFertilizante = data[this.id].idDatosFertilizante.fechaAplicacion;
+    this.fertilizacion = data[this.id].idDatosFertilizante.fertilizacion;
   }
 
 }

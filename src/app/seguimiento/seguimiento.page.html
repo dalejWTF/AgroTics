@@ -12,7 +12,7 @@
   <br>
   <ion-text class="totalSeguimiento" > Total de Registros: {{seguimiento.length}}</ion-text>  
   <ion-list *ngIf="seguimiento.length > 0; else SinRegistros">
-    <ion-item *ngFor="let seg of seguimiento" [routerLink]="['/seguimiento',seg.id]">
+    <ion-item *ngFor="let seg of seguimiento; index as i" [routerLink]="['/seguimiento',i]">
     
       <ion-avatar slot="start">
         <ion-img [src]="seg.idPlanta.imagen"></ion-img>
